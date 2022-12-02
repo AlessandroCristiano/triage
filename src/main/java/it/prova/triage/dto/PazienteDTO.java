@@ -1,6 +1,8 @@
 package it.prova.triage.dto;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
@@ -27,6 +29,7 @@ public class PazienteDTO {
 	private LocalDate dataRegistrazione;
 	@Column(name = "stato")
 	private StatoPaziente stato;
+	
 	
 	public PazienteDTO(Long id, String nome, String cognome, String codiceFiscale, LocalDate dataRegistrazione,
 			StatoPaziente stato) {
@@ -92,8 +95,16 @@ public class PazienteDTO {
 		return new Paziente(this.id, this.nome, this.cognome, this.codiceFiscale, this.dataRegistrazione, this.stato);
 	}
 	
-	public PazienteDTO buildPazienteDTOFromModel(Paziente model) {
+	public static PazienteDTO buildPazienteDTOFromModel(Paziente model) {
 		return new PazienteDTO(model.getId(), model.getNome(), model.getCognome(),model.getCodiceFiscale(), model.getDataRegistrazione(),model.getStato());
+	}
+	
+	public static List<PazienteDTO> createPazienteDTOListFromModelList(List<Paziente> modelListInput) {
+		return modelListInput.stream()
+				.map(pazienteModel -> new PazienteDTO(pazienteModel.getId(), pazienteModel.getNome(),
+						pazienteModel.getCognome(), pazienteModel.getCodiceFiscale(),
+						pazienteModel.getDataRegistrazione(), pazienteModel.getStato()))
+				.collect(Collectors.toList());
 	}
 
 }

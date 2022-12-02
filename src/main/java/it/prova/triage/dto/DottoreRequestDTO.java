@@ -1,38 +1,26 @@
 package it.prova.triage.dto;
 
-import javax.validation.constraints.NotBlank;
-
 public class DottoreRequestDTO {
 	
-	
-	@NotBlank(message = "{nome.notblank}")
-	private String nome;
-	@NotBlank(message = "{cognome.notblank}")
-	private String cognome;
-	@NotBlank(message = "{codiceDottore.notblank}")
+	private String codiceFiscale;
 	private String codiceDottore;
-	
-	public DottoreRequestDTO(String nome, String cognome, String codiceDottore) {
+
+	public DottoreRequestDTO() {
 		super();
-		this.nome = nome;
-		this.cognome = cognome;
+	}
+
+	public DottoreRequestDTO(String codiceFiscale, String codiceDottore) {
+		super();
+		this.codiceFiscale = codiceFiscale;
 		this.codiceDottore = codiceDottore;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getCodiceFiscale() {
+		return codiceFiscale;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCognome() {
-		return cognome;
-	}
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setCodiceFiscale(String codiceFiscale) {
+		this.codiceFiscale = codiceFiscale;
 	}
 
 	public String getCodiceDottore() {

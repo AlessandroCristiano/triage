@@ -9,8 +9,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import it.prova.triage.model.Paziente;
 import it.prova.triage.model.Ruolo;
 import it.prova.triage.model.Utente;
+import it.prova.triage.service.PazienteService;
 import it.prova.triage.service.RuoloService;
 import it.prova.triage.service.UtenteService;
 
@@ -24,6 +26,9 @@ public class TriageApplication implements CommandLineRunner{
 	
 	@Autowired
 	private UtenteService utenteServiceInstance;
+	
+	@Autowired
+	private PazienteService pazienteServiceInstance;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TriageApplication.class, args);
@@ -55,6 +60,10 @@ public class TriageApplication implements CommandLineRunner{
 			utenteServiceInstance.changeUserAbilitation(user.getId());
 		}
 		
+		//CREA DEI PAZIENTI
+		pazienteServiceInstance.inserisciNuovo(new Paziente("Mattia", "balraj", "IDBOALOASDW"));
+		
+		pazienteServiceInstance.inserisciNuovo(new Paziente("Noemi", "Mezzo", "PDJPAJSJDWASD"));
 	}
 
 }

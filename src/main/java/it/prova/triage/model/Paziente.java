@@ -27,10 +27,20 @@ public class Paziente {
 	private LocalDate dataRegistrazione;
 	@Column(name = "stato")
 	private StatoPaziente stato;
+	@Column(name = "codiceDottore")
+	private String codiceDottore;
 	
 	public Paziente() {
 		super();
 	}
+
+	public Paziente(String nome, String cognome, String codiceFiscale) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.codiceFiscale = codiceFiscale;
+	}
+
 	public Paziente(Long id, String nome, String cognome, String codiceFiscale, LocalDate dataRegistrazione,
 			StatoPaziente stato) {
 		super();
@@ -77,6 +87,12 @@ public class Paziente {
 	}
 	public void setStato(StatoPaziente stato) {
 		this.stato = stato;
+	}
+	public String getCodiceDottore() {
+		return codiceDottore;
+	}
+	public void setCodiceDottore(String codiceDottore) {
+		this.codiceDottore = codiceDottore;
 	}
 
 }
