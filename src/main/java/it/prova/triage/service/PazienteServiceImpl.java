@@ -77,6 +77,7 @@ public class PazienteServiceImpl implements PazienteService{
 
 	@Override
 	public void ricovera(Paziente paziente) {
+		paziente.setCodiceDottore(null);
 		paziente.setStato(StatoPaziente.RICOVERATO);
 		repository.save(paziente);
 	}
